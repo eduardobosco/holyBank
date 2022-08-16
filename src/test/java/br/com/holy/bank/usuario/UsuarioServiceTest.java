@@ -1,9 +1,13 @@
 package br.com.holy.bank.usuario;
 
-import static org.hamcrest.CoreMatchers.any;
 
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.Test;
+
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -16,7 +20,7 @@ class UsuarioServiceTest {
 	
 	@Before
 	public void setup() {
-		MockitoAnnotations.openMocks(this);
+		MockitoAnnotations.initMocks(this);
 		usuarioService = new UsuarioService(usuarioRepository);
 		
 	}
@@ -26,7 +30,7 @@ class UsuarioServiceTest {
 		//given
 		Usuario usuario = UsuarioServiceMass.getUsuarioValido();
 		//when
-		when(usuarioRepository.inserir(any())).thenReturn();
+		when(usuarioService.inserir(any())).thenReturn();
 		//then
 	}
 

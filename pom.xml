@@ -5,17 +5,20 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.1.9.RELEASE</version>
 	</parent>
+	
 	<groupId>br.com.holy</groupId>
 	<artifactId>bank</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>HolyBank</name>
 	<description>Projeto para fixação de conhecimentos</description>
+	
 	<properties>
 		<java.version>11</java.version>
+		<lombok.version>1.18.22</lombok.version>
 	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

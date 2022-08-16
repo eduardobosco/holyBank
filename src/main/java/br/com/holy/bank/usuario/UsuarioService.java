@@ -10,6 +10,13 @@ public class UsuarioService {
 	public UsuarioService(UsuarioRepository usuarioRepository) {
 		usuarioRepository=this.usuarioRepository;
 	}
+
+	public Usuario inserir(Usuario usuario) {
+		Usuario usuarioSalvo = usuarioRepository.save(usuario);
+		return usuarioSalvo;
+	}
+
+
 	
 	
 
