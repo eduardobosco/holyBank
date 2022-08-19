@@ -1,5 +1,7 @@
 package br.com.holy.bank.usuario;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +16,10 @@ public class UsuarioService {
 	public Usuario inserir(Usuario usuario) {
 		Usuario usuarioSalvo = usuarioRepository.save(usuario);
 		return usuarioSalvo;
+	}
+
+	public List<Usuario> listar() {
+		return usuarioRepository.findAll();
 	}
 
 
