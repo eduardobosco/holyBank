@@ -3,7 +3,6 @@ package br.com.holy.bank.usuario;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import br.com.holy.bank.endereco.Endereco;
 
@@ -14,7 +13,7 @@ public class UsuarioServiceMass {
 		List<Endereco> endereco = new ArrayList<>();
 		
 		endereco.add(Endereco.builder()
-		.id(new UUID(0, 0))
+		.id(1L)
 		.rua("rua")
 		.numero(10)
 		.bairro("bairro")
@@ -24,7 +23,7 @@ public class UsuarioServiceMass {
 		.build());
 		
 		return Usuario.builder()
-				.id(new UUID(0, 0))
+				.id(1L)
 				.nome("nome")
 				.cpf("cpf")
 				.email("email")
