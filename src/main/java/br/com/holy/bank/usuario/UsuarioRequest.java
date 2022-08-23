@@ -22,12 +22,15 @@ public class UsuarioRequest {
 
 	public Usuario converter(UsuarioRepository usuarioRepository, EnderecoRepository enderecoRepository) {
 		return new Usuario(nome, cpf, password, email, telefone);
-
 	}
-	
-	
-	
-	
-	
 
+	public Usuario atualizar(Long id, UsuarioRepository usuarioRepository) {
+		Usuario usuario = usuarioRepository.getOne(id);
+		usuario.setNome(nome);
+		usuario.setCpf(cpf);
+		usuario.setPassword(password);
+		usuario.setEmail(email);
+		usuario.setTelefone(telefone);
+		return usuario;
+	}
 }

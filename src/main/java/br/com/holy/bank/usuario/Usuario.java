@@ -2,15 +2,18 @@ package br.com.holy.bank.usuario;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import br.com.holy.bank.endereco.Endereco;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +38,9 @@ public class Usuario implements Serializable {
 	
 	@JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
 	private LocalDateTime criadoEm = LocalDateTime.now();
+	
+	@OneToMany(mappedBy = "usuario")
+	List<Endereco> endereco;	
 	
 
 	public Usuario(String nome, String cpf, String password, String email, String telefone) {

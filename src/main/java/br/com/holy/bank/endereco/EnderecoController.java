@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.holy.bank.usuario.Usuario;
 import br.com.holy.bank.usuario.UsuarioRepository;
 
 @Controller
