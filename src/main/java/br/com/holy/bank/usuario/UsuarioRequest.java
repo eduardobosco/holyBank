@@ -1,6 +1,5 @@
 package br.com.holy.bank.usuario;
 
-import br.com.holy.bank.endereco.Endereco;
 import br.com.holy.bank.endereco.EnderecoRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,12 +19,9 @@ public class UsuarioRequest {
 	private String password;
 	private String email;
 	private String telefone;
-	private Long idEndereco;
-	
 
 	public Usuario converter(UsuarioRepository usuarioRepository, EnderecoRepository enderecoRepository) {
-		Endereco endereco = enderecoRepository.getOne(idEndereco);
-		return new Usuario(nome, cpf, password, email, telefone, endereco);
+		return new Usuario(nome, cpf, password, email, telefone);
 
 	}
 	

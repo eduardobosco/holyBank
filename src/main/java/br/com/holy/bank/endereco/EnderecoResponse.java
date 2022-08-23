@@ -17,6 +17,7 @@ public class EnderecoResponse {
 	private String cidade;
 	private String estado;
 	private String pais;
+	private Long usuario_id;
 	
 	
 	public EnderecoResponse(Endereco endereco) {
@@ -27,6 +28,7 @@ public class EnderecoResponse {
 		this.cidade = endereco.getCidade();
 		this.estado = endereco.getEstado();
 		this.pais = endereco.getPais();
+		this.usuario_id=endereco.getUsuario().getId();
 	}
 	
 	

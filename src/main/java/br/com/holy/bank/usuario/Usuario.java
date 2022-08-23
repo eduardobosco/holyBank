@@ -7,12 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import br.com.holy.bank.endereco.Endereco;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,16 +36,13 @@ public class Usuario implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
 	private LocalDateTime criadoEm = LocalDateTime.now();
 	
-	@ManyToOne
-	private Endereco endereco;
 
-	public Usuario(String nome, String cpf, String password, String email, String telefone, Endereco endereco) {
+	public Usuario(String nome, String cpf, String password, String email, String telefone) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.password = password;
 		this.email = email;
 		this.telefone = telefone;
-		this.endereco = endereco;
 	}
 }

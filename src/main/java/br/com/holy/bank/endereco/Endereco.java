@@ -40,8 +40,11 @@ public class Endereco implements Serializable {
 	private String estado;
 	private String pais;
 	
+	@ManyToOne
+	private Usuario usuario;
 	
-	public Endereco(String rua, Integer numero, String bairro, String cidade, String estado, String pais) {
+	
+	public Endereco(String rua, Integer numero, String bairro, String cidade, String estado, String pais, Usuario usuario) {
 		super();
 		this.rua = rua;
 		this.numero = numero;
@@ -49,6 +52,7 @@ public class Endereco implements Serializable {
 		this.cidade = cidade;
 		this.estado = estado;
 		this.pais = pais;
+		this.usuario=usuario;
 	}
 	
 	
