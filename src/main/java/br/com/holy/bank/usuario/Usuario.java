@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.holy.bank.endereco.Endereco;
 import lombok.Getter;
@@ -39,10 +40,10 @@ public class Usuario implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
 	private LocalDateTime criadoEm = LocalDateTime.now();
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "usuario")
 	List<Endereco> endereco;	
 	
-
 	public Usuario(String nome, String cpf, String password, String email, String telefone) {
 		super();
 		this.nome = nome;

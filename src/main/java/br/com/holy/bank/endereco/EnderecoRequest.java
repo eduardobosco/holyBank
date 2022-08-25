@@ -26,6 +26,18 @@ public class EnderecoRequest {
 		Usuario usuario = usuarioRepository.getOne(usuario_id);
 		return new Endereco(rua, numero, bairro, cidade, estado, pais, usuario);
 	}
+
+
+	public Endereco atualizar(Long id, EnderecoRepository enderecoRepository) {
+		Endereco endereco = enderecoRepository.getOne(id);
+		endereco.setRua(rua);
+		endereco.setNumero(numero);
+		endereco.setBairro(bairro);
+		endereco.setCidade(cidade);
+		endereco.setEstado(estado);
+		endereco.setPais(pais);
+		return endereco;
+	}
 	
 	
 

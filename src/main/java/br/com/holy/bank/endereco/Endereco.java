@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import br.com.holy.bank.usuario.Usuario;
 import lombok.AllArgsConstructor;
@@ -40,9 +40,8 @@ public class Endereco implements Serializable {
 	private String pais;
 	
 	@ManyToOne
-	@JsonIgnore
+	@JsonBackReference
 	private Usuario usuario;
-	
 	
 	public Endereco(String rua, Integer numero, String bairro, String cidade, String estado, String pais, Usuario usuario) {
 		super();
