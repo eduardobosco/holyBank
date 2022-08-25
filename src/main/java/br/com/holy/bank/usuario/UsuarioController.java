@@ -39,10 +39,10 @@ public class UsuarioController {
 	
 	@GetMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<UsuarioResponse> listarPorId (@PathVariable Long id){
+	public ResponseEntity<UsuarioDetalhadoResponse> listarPorId (@PathVariable Long id){
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 		if (usuario.isPresent()) {
-			return ResponseEntity.ok(new UsuarioResponse(usuario.get()));
+			return ResponseEntity.ok(new UsuarioDetalhadoResponse(usuario.get()));
 		}		
 		return ResponseEntity.notFound().build();
 	}
