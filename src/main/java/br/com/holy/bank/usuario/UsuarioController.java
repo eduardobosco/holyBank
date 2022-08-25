@@ -39,7 +39,7 @@ public class UsuarioController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<UsuarioResponse> inserir (@RequestBody UsuarioRequest usuarioRequest){
+	public ResponseEntity<UsuarioResponse> inserir (@RequestBody @Valid UsuarioRequest usuarioRequest){
 		Usuario usuario = usuarioRequest.converter(usuarioRepository, enderecoRepository);
 		usuarioRepository.save(usuario);
 		

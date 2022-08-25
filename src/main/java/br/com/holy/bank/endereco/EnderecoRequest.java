@@ -1,5 +1,9 @@
 package br.com.holy.bank.endereco;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import br.com.holy.bank.usuario.Usuario;
 import br.com.holy.bank.usuario.UsuarioRepository;
 import lombok.AllArgsConstructor;
@@ -13,12 +17,29 @@ import lombok.Setter;
 @AllArgsConstructor
 public class EnderecoRequest {
 	
+	@NotBlank
+	@Size(max = 64)
 	private String rua;
+	
+	@NotNull
 	private Integer numero;
+	
+	@NotBlank
+	@Size(max = 64)
 	private String bairro;
+	
+	@NotBlank
+	@Size(max = 64)
 	private String cidade;
+	
+	@NotBlank
+	@Size(max = 64)
 	private String estado;
+	
+	@NotBlank
+	@Size(max = 64)
 	private String pais;
+	
 	private Long usuario_id;
 	
 

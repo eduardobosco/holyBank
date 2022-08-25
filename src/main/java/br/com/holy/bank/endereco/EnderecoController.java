@@ -39,7 +39,7 @@ public class EnderecoController {
 
 	@PostMapping
 	@Transactional
-	public ResponseEntity<EnderecoResponse> inserir(@RequestBody EnderecoRequest enderecoRequest) {
+	public ResponseEntity<EnderecoResponse> inserir(@RequestBody @Valid EnderecoRequest enderecoRequest) {
 		Endereco endereco = enderecoRequest.convert(enderecoRepository, usuarioRepository);
 		enderecoRepository.save(endereco);
 

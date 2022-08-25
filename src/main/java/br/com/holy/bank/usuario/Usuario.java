@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
 	private Long id;
 	
 	private String nome;
-	private String cpf;
+	private String documento;
 	private String password;
 	private String email;
 	private String telefone;
@@ -44,10 +44,10 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy = "usuario")
 	List<Endereco> endereco;	
 	
-	public Usuario(String nome, String cpf, String password, String email, String telefone) {
+	public Usuario(String nome, String documento, String password, String email, String telefone) {
 		super();
 		this.nome = nome;
-		this.cpf = cpf;
+		this.documento = documento;
 		this.password = password;
 		this.email = email;
 		this.telefone = telefone;
