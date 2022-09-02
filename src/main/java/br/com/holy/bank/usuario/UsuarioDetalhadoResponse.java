@@ -24,7 +24,6 @@ public class UsuarioDetalhadoResponse {
 	private String email;
 	private String telefone;
 	private List<EnderecoResponse> enderecos;
-
 		
 	public UsuarioDetalhadoResponse(Usuario usuario) {
 		super();
