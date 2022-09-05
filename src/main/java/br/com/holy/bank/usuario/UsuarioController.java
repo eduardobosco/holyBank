@@ -1,5 +1,10 @@
 package br.com.holy.bank.usuario;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -32,9 +38,6 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	@Autowired
-	private PasswordEncoder encoder;
-	
 	@GetMapping
 	@ResponseBody
 	public List<Usuario> listar (){
@@ -53,23 +56,34 @@ public class UsuarioController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<UsuarioResponse> inserir (@RequestBody @Valid UsuarioRequest usuarioRequest){
+	public ResponseEntity<UsuarioResponse> inserir (@RequestBody @Valid UsuarioRequest usuarioRequest) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		Usuario usuario = usuarioRequest.converter(usuarioRepository, enderecoRepository);
-		usuarioRepository.save(usuario);
-		
+				
 		final UsuarioResponse response = new UsuarioResponse(usuario);
-		
-		response.setPassword(encoder.encode(usuario.getPassword()));
+				
+		usuarioRepository.save(usuario);
 
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
 	@Transactional
-	public ResponseEntity<UsuarioResponse> atualizar(@PathVariable Long id, @RequestBody @Valid UsuarioRequest usuarioRequest ){
+	public ResponseEntity<UsuarioResponse> atualizar(@PathVariable Long id, @RequestBody @Valid UsuarioRequest usuarioRequest ) throws NoSuchAlgorithmException{
 		Optional<Usuario> optional = usuarioRepository.findById(id);
 		if(optional.isPresent()) {
 			Usuario usuario = usuarioRequest.atualizar(id, usuarioRepository);
+		
+		return ResponseEntity.ok(new UsuarioResponse(usuario));
+		}
+		return ResponseEntity.notFound().build(); 
+	}
+	
+	@PatchMapping("/{id}")
+	@Transactional
+	public ResponseEntity<UsuarioResponse> atualizarCamposIndividuais(@PathVariable Long id, @RequestBody @Valid UsuarioRequest usuarioRequest ) throws NoSuchAlgorithmException{
+		Optional<Usuario> optional = usuarioRepository.findById(id);
+		if(optional.isPresent()) {
+			Usuario usuario = usuarioRequest.atualizarCamposIndividuais(id, usuarioRepository);
 		
 		return ResponseEntity.ok(new UsuarioResponse(usuario));
 		}

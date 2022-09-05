@@ -13,10 +13,4 @@ public class HolyBankApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HolyBankApplication.class, args);
 	}
-	
-	@Bean
-	public PasswordEncoder getPassEncoder() {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder;
-	}
 }
